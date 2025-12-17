@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2nd Monthsary Surprise</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #fdf6e3, #fcebbf);
+            font-family: 'Segoe UI', sans-serif;
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+        }
+        #greeting {
+            font-size: 2rem;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        #timeline {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+        }
+        .event {
+            background: rgba(255,255,255,0.7);
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .event:hover {
+            transform: scale(1.05);
+            background: rgba(255, 200, 200, 0.8);
+        }
+        #memoryImg {
+            max-width: 200px;
+            margin-top: 20px;
+            display: none;
+            border-radius: 10px;
+        }
+        #playlistBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            background-color: #333;
+            color: #fdf6e3;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="greeting">Two months today honey. Happy monthsarry. Still choosing you my honey.
+          I love you always :>
+        </h1>
+        <div id="timeline">
+    <div class="event" data-img="JaraMyHoney.2ndmonthssary/3.jpg">The day I confessed – May 31, 2024</div>
+<div class="event" data-img="JaraMyHoney/2ndmonthsarry/1.jpg">The day you said yes – October 18, 2025</div>
+<div class="event" data-img="JaraMyHoney/2ndmonthsarry/2.jpg">Today, our 2nd monthsarry – December 18, 2025</div>
+
+<img id="memory-img" src="JaraMyHoney/CutiePie ;c/IMG_20250702_065600.jpg" alt="Memory" style="width:300px;height:auto;">
+
+        <button id="playlistBtn">Open Monthsary Playlist</button>
+    </div>
+
+
+    <script>
+        const greeting = document.getElementById('greeting');
+        const timeline = document.getElementById('timeline');
+        const events = document.querySelectorAll('.event');
+        const img = document.getElementById('memoryImg');
+        const playlistBtn = document.getElementById('playlistBtn');
+
+        // Fade in greeting after 1 sec
+        setTimeout(() => {
+            greeting.style.opacity = 1;
+            timeline.style.opacity = 1;
+        }, 1000);
+
+        // Clicking on an event shows its memory image
+        events.forEach(event => {
+            event.addEventListener('click', () => {
+                img.src = event.getAttribute('data-img');
+                img.style.display = 'block';
+            });
+        });
+
+        // Playlist button opens your monthsary playlist
+        playlistBtn.addEventListener('click', () => {
+            window.open('https://open.spotify.com/playlist/4DDwb3bv06xDAeB3t0xEHq?uid=cc16bb5b1ce94af9&uri=spotify:track:1dGr1c8CrMLDpV6mPbImSI', '_blank');
+        });
+
+        // Optional: subtle floating hearts animation
+        const createHeart = () => {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'absolute';
+            heart.style.fontSize = Math.random() * 24 + 16 + 'px';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            heart.style.opacity = 0.7;
+            document.body.appendChild(heart);
+            
+            let top = window.innerHeight;
+            const interval = setInterval(() => {
+                top -= 2;
+                heart.style.top = top + 'px';
+                if(top < -50) {
+                    clearInterval(interval);
+                    heart.remove();
+                }
+            }, 20);
+        };
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
